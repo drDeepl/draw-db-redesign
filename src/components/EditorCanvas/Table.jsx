@@ -1,20 +1,20 @@
+import {
+  IconDeleteStroked,
+  IconEdit,
+  IconKeyStroked,
+  IconMinus,
+  IconMore,
+} from "@douyinfe/semi-icons";
+import { Button, Popover, SideSheet, Tag, Toast } from "@douyinfe/semi-ui";
 import { useState } from "react";
 import {
-  Tab,
   ObjectType,
+  Tab,
+  tableColorStripHeight,
   tableFieldHeight,
   tableHeaderHeight,
-  tableColorStripHeight,
 } from "../../data/constants";
-import {
-  IconEdit,
-  IconMore,
-  IconMinus,
-  IconDeleteStroked,
-  IconKeyStroked,
-} from "@douyinfe/semi-icons";
-import { Popover, Tag, Button, Toast, SideSheet } from "@douyinfe/semi-ui";
-import { useLayout, useSettings, useTables, useSelect } from "../../hooks";
+import { useLayout, useSelect, useSettings, useTables } from "../../hooks";
 import TableInfo from "../EditorSidePanel/TablesTab/TableInfo";
 
 export default function Table(props) {
@@ -87,7 +87,7 @@ export default function Table(props) {
           />
           <div
             className={`overflow-hidden font-bold h-[40px] flex justify-between items-center border-b border-gray-200 ${
-              settings.mode === "light" ? "bg-grey-200" : "bg-zinc-900"
+              settings.mode === "light" ? "bg-zinc-50" : "bg-zinc-900"
             }`}
           >
             <div className=" px-3 overflow-hidden text-ellipsis whitespace-nowrap">
@@ -275,7 +275,7 @@ export default function Table(props) {
           index === tableData.fields.length - 1
             ? ""
             : "border-b border-gray-400"
-        } group h-[36px] px-2 py-1 flex justify-between items-center gap-1 w-full overflow-hidden`}
+        } bg-neutral-50 group h-[36px] px-2 py-1 flex justify-between items-center gap-1 w-full overflow-hidden`}
         onMouseEnter={() => {
           setHoveredField(index);
           setHoveredTable({
