@@ -6,7 +6,7 @@ import {
   Action,
   ObjectType,
   State,
-  defaultBlue,
+  defaultTableColor,
 } from "../../../data/constants";
 import ColorPalette from "../../ColorPalette";
 
@@ -55,7 +55,7 @@ export default function AreaInfo({ data, i }) {
               <ColorPalette
                 currentColor={data.color}
                 onClearColor={() => {
-                  updateArea(i, { color: defaultBlue });
+                  updateArea(i, { color: defaultTableColor });
                   setSaveState(State.SAVING);
                 }}
                 onPickColor={(c) => {

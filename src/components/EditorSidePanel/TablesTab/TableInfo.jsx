@@ -12,7 +12,7 @@ import {
 } from "@douyinfe/semi-ui";
 import { IconDeleteStroked } from "@douyinfe/semi-icons";
 import { useTables, useUndoRedo } from "../../../hooks";
-import { Action, ObjectType, defaultBlue } from "../../../data/constants";
+import { Action, ObjectType, defaultTableColor } from "../../../data/constants";
 import ColorPalette from "../../ColorPalette";
 import TableField from "./TableField";
 import IndexDetails from "./IndexDetails";
@@ -219,12 +219,12 @@ export default function TableInfo({ data }) {
                         component: "self",
                         tid: data.id,
                         undo: { color: data.color },
-                        redo: { color: defaultBlue },
+                        redo: { color: defaultTableColor },
                         message: `Edit table color to default`,
                       },
                     ]);
                     setRedoStack([]);
-                    updateTable(data.id, { color: defaultBlue });
+                    updateTable(data.id, { color: defaultTableColor });
                   }}
                   onPickColor={(c) => {
                     setUndoStack((prev) => [

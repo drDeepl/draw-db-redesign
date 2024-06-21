@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Action, ObjectType, defaultBlue } from "../data/constants";
+import { Action, ObjectType, defaultTableColor } from "../data/constants";
 import useTransform from "../hooks/useTransform";
 import useUndoRedo from "../hooks/useUndoRedo";
 import useSelect from "../hooks/useSelect";
@@ -44,7 +44,7 @@ export default function TablesContextProvider({ children }) {
           ],
           comment: "",
           indices: [],
-          color: defaultBlue,
+          color: defaultTableColor,
           key: Date.now(),
         },
       ]);
@@ -106,7 +106,7 @@ export default function TablesContextProvider({ children }) {
 
   const updateTable = (id, updatedValues) => {
     setTables((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, ...updatedValues } : t))
+      prev.map((t) => (t.id === id ? { ...t, ...updatedValues } : t)),
     );
   };
 
@@ -117,12 +117,12 @@ export default function TablesContextProvider({ children }) {
           return {
             ...table,
             fields: table.fields.map((field, j) =>
-              fid === j ? { ...field, ...updatedValues } : field
+              fid === j ? { ...field, ...updatedValues } : field,
             ),
           };
         }
         return table;
-      })
+      }),
     );
   };
 
@@ -146,9 +146,9 @@ export default function TablesContextProvider({ children }) {
             !(
               (e.startTableId === tid && e.startFieldId === field.id) ||
               (e.endTableId === tid && e.endFieldId === field.id)
-            )
+            ),
         )
-        .map((e, i) => ({ ...e, id: i }))
+        .map((e, i) => ({ ...e, id: i })),
     );
     setRelationships((prev) => {
       return prev.map((e) => {
@@ -214,7 +214,7 @@ export default function TablesContextProvider({ children }) {
       setRedoStack([]);
     }
     setRelationships((prev) =>
-      prev.filter((e) => e.id !== id).map((e, i) => ({ ...e, id: i }))
+      prev.filter((e) => e.id !== id).map((e, i) => ({ ...e, id: i })),
     );
   };
 

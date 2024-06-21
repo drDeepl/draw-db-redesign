@@ -64,21 +64,21 @@ export default function Table(props) {
         y={tableData.y}
         width={settings.tableWidth}
         height={height}
-        className="group drop-shadow-lg rounded-md cursor-move"
+        className="group drop-shadow-md rounded-md cursor-move"
         onMouseDown={onMouseDown}
       >
         <div
           onDoubleClick={openEditor}
-          className={`border-2 hover:border-dashed hover:border-blue-500
-               select-none rounded-lg w-full ${
+          className={`border-2 hover:border-dashed hover:border-indigo-300
+               select-none rounded-md w-full ${
                  settings.mode === "light"
                    ? "bg-zinc-100 text-zinc-800"
                    : "bg-zinc-800 text-zinc-200"
                } ${
                  selectedElement.id === tableData.id &&
                  selectedElement.element === ObjectType.TABLE
-                   ? "border-solid border-blue-500"
-                   : "border-zinc-500"
+                   ? "border-solid border-grey-500"
+                   : "border-grey-500"
                }`}
         >
           <div
@@ -86,8 +86,8 @@ export default function Table(props) {
             style={{ backgroundColor: tableData.color }}
           />
           <div
-            className={`overflow-hidden font-bold h-[40px] flex justify-between items-center border-b border-gray-400 ${
-              settings.mode === "light" ? "bg-zinc-200" : "bg-zinc-900"
+            className={`overflow-hidden font-bold h-[40px] flex justify-between items-center border-b border-gray-200 ${
+              settings.mode === "light" ? "bg-grey-200" : "bg-zinc-900"
             }`}
           >
             <div className=" px-3 overflow-hidden text-ellipsis whitespace-nowrap">
@@ -100,8 +100,10 @@ export default function Table(props) {
                   size="small"
                   theme="solid"
                   style={{
-                    backgroundColor: "#2f68adb3",
+                    backgroundColor: "rgb(229 231 235)",
                     marginRight: "6px",
+                    color: "rgb(71 85 105)",
+                    borderRadius: "16px",
                   }}
                   onClick={openEditor}
                 />
@@ -134,7 +136,7 @@ export default function Table(props) {
                                 key={k}
                                 className={`flex items-center my-1 px-2 py-1 rounded ${
                                   settings.mode === "light"
-                                    ? "bg-gray-100"
+                                    ? "bg-stone-200"
                                     : "bg-zinc-800"
                                 }`}
                               >
@@ -175,8 +177,9 @@ export default function Table(props) {
                     type="tertiary"
                     size="small"
                     style={{
-                      backgroundColor: "#808080b3",
-                      color: "white",
+                      backgroundColor: "rgb(229 231 235)",
+                      color: "rgb(71 85 105)",
+                      borderRadius: "16px",
                     }}
                   />
                 </Popover>
@@ -290,7 +293,7 @@ export default function Table(props) {
           } flex items-center gap-2 overflow-hidden`}
         >
           <button
-            className="flex-shrink-0 w-[10px] h-[10px] bg-[#2f68adcc] rounded-full"
+            className="flex-shrink-0 w-[10px] h-[10px] bg-[#aad6f6] rounded-full"
             onMouseDown={() => {
               handleGripField(index);
               setLinkingLine((prev) => ({
@@ -324,7 +327,8 @@ export default function Table(props) {
               theme="solid"
               size="small"
               style={{
-                backgroundColor: "#d42020b3",
+                backgroundColor: "rgba(241, 70, 71, 0.1)",
+                color: "rgba(241, 70, 71, 1)",
               }}
               icon={<IconMinus />}
               onClick={() => deleteField(fieldData, tableData.id)}

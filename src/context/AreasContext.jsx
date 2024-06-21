@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Action, ObjectType, defaultBlue } from "../data/constants";
+import { Action, ObjectType, defaultTableColor } from "../data/constants";
 import useUndoRedo from "../hooks/useUndoRedo";
 import useTransform from "../hooks/useTransform";
 import useSelect from "../hooks/useSelect";
@@ -29,7 +29,7 @@ export default function AreasContextProvider({ children }) {
           y: -transform.pan.y,
           width: 200,
           height: 200,
-          color: defaultBlue,
+          color: defaultTableColor,
         },
       ]);
     }
@@ -60,7 +60,7 @@ export default function AreasContextProvider({ children }) {
       setRedoStack([]);
     }
     setAreas((prev) =>
-      prev.filter((e) => e.id !== id).map((e, i) => ({ ...e, id: i }))
+      prev.filter((e) => e.id !== id).map((e, i) => ({ ...e, id: i })),
     );
     if (id === selectedElement.id) {
       setSelectedElement((prev) => ({
@@ -82,7 +82,7 @@ export default function AreasContextProvider({ children }) {
           };
         }
         return t;
-      })
+      }),
     );
   };
 

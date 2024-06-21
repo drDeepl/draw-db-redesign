@@ -5,7 +5,7 @@ import {
   Tab,
   Action,
   ObjectType,
-  defaultBlue,
+  defaultTableColor,
   State,
 } from "../../data/constants";
 import {
@@ -242,7 +242,7 @@ function EditPopoverContent({ data }) {
                 }}
                 onClearColor={() => {
                   updateArea(data.id, {
-                    color: defaultBlue,
+                    color: defaultTableColor,
                   });
                   setSaveState(State.SAVING);
                 }}
